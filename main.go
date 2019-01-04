@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/philipsahli/gontador.test/service"
+	pb "github.com/philipsahli/gontador/service"
 	"google.golang.org/grpc"
 )
 
