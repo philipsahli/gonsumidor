@@ -1,0 +1,26 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: gonsumidor-build
+  namespace: gontador
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'gonsumidor:latest'
+  source:
+    git:
+      uri: 'https://github.com/philipsahli/gonsumidor.git'
+      ref: 'master'
+    type: Git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  triggers:
+    - imageChange:
+      type: ImageChange
+    - type: ConfigChange
+    - github:
+        secret: 4tqgB6gCvDQBoWBiKtNcm3NsT37MM602KhLGKrCR
+      type: GitHub
